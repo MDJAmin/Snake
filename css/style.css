@@ -3,127 +3,125 @@
     padding: 0;
     box-sizing: border-box;
   }
-  
-  html ,body{
-    width: 100%;
-    height: 100%;
-    background: #c8d218;
-    font-family: "Varela Round";
-  }
+  html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background: #c8d218;
+  font-family: "Varela Round";
+}
 
-  body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .container{
-    width: 90%;
-    max-width: 400px;
-    border: 9px solid #ffa000;
-    border-radius: 15px;
-    box-shadow: 10px 10px 50px 15px rgba(0, 0, 0, 0.3);
-    background-color: #455a64;
-    position: relative;
-  }
+.container {
+  width: 90%;
+  max-width: 400px;
+  border: 9px solid #ffa000;
+  border-radius: 15px;
+  box-shadow: 10px 10px 50px 15px rgba(0, 0, 0, 0.3);
+  background-color: #455a64;
+  position: relative;
+}
 
-  .canvas-wrapper{
-    width: 100%;
-    height: 0;
-    padding-bottom: 100%;
-    position: relative;
-  }
+.canvas-wrapper {
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+  position: relative;
+}
 
-  canvas {
-    position: relative;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 100%;
-    width: 100%;
-    background-color: #37474f;
-  }
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #37474f;
+}
 
-  .controls{
-    width: 100%;
-    padding-top: 20px;
-    padding-bottom: 0;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-  }
+.controls {
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 
-  /* button[class^="btn"] for selecting all buttons that has a starting class with btn */
+button[class^="btn"] {
+  background-color: #ffa000;
+  padding: 5px 20px;
+  text-transform: uppercase;
+  font-family: "Varela Round";
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 3px;
+  letter-spacing: 0.3em;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
+  outline: none;
+  cursor: pointer;
+  transition: box-shadow 0.3s, background 0.3s;
+  text-align: center;
+  margin: 0 20px 0;
+  margin-bottom: 20px;
+}
+button[class^="btn"]:hover {
+  background: #ffb333;
+  box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.3);
+}
+@media (min-width: 450px) {
   button[class^="btn"] {
-    background-color: #ffa000;
-    padding: 5px 20px;
-    text-transform: uppercase;
-    font-family: "Varela Round";
-    font-size: 14px;
-    color: white;
-    font-weight: bold;
-    border: none;
-    border-radius: 3px;
-    letter-spacing: 0.3em;
-    height: 30px;
-    line-height: 30px;
-    padding: 0 10px;
-    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
-    outline: none;
-    cursor: pointer;
-    transition: box-shadow 0.3s, background 0.3s;
-    text-align: center;
-    margin: 0 20px 0;
-    margin-bottom: 20px;
+    width: 150px;
   }
-  button[class^="btn"]:hover {
-    background: #ffb333;
-    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.3);
-  }
-  @media (min-width: 450px) {
-    button[class^="btn"] {
-      width: 150px;
-    }
-  }
+}
 
-  button[disabled] {
-    background: #cc8000;
-  }
-  
-  .range { 
-    width: 100%;
-    margin-bottom: 20px;
-    margin: 0 20px 20px;
-    display: flex;
-    align-items: center;
-  }
-  .range ~ label{
-    color: white;
-    margin-right: 20px;
-    text-transform: uppercase;
-    width: 30%;
-  }
+button[disabled] {
+  background: #cc8000;
+}
 
-.range_inputWrapper{
+.range {
+  width: 100%;
+  margin-bottom: 20px;
+  margin: 0 20px 20px;
+  display: flex;
+  align-items: center;
+}
+.range label {
+  color: white;
+  text-transform: uppercase;
+  margin-right: 20px;
+  width: 30%;
+}
+.range_inputWrapper {
   width: 100%;
   position: relative;
   height: 20px;
   background-color: #fff;
   box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
 }
-
-.range_inputValue{
+.range_inputValue {
   position: absolute;
   left: 0;
   top: 0;
-  color: #ddd;
   height: 100%;
+  color: white;
   font-size: 14px;
+  height: 100%;
   padding-left: 3px;
   line-height: 20px;
 }
-
 .range_inputSlider {
   transform-origin: left top;
   position: absolute;
@@ -148,6 +146,8 @@
   z-index: 1;
 }
 
+
+
 .score {
   position: absolute;
   top: 10px;
@@ -162,31 +162,31 @@
   color: white;
 }
 
-.dpad{
+.dpad {
   width: 100px;
   margin: 0 auto;
   margin-bottom: 20px;
   display: none;
 }
 
-button[class^="control"]{
+button[class^="control"] {
   background: #ffa000;
   border: none;
   border-radius: 3px;
 }
 
-.control-up{
+.control-up {
   display: block;
 }
 
-.control-down svg{
+.control-down svg {
   transform: rotate(180deg);
 }
 
-.control-left svg{
+.control-left svg {
   transform: rotate(90deg);
 }
 
-.control-right svg{
+.control-right svg {
   transform: rotate(-90deg);
 }
