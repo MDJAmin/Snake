@@ -98,7 +98,7 @@
     display: flex;
     align-items: center;
   }
-  .range label{
+  .range ~ label{
     color: white;
     margin-right: 20px;
     text-transform: uppercase;
@@ -146,4 +146,47 @@
   opacity: 0;
   cursor: ew-resize;
   z-index: 1;
+}
+
+.score {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+  opacity: 0.3;
+  text-transform: uppercase;
+  color: white;
+}
+
+.dpad{
+  width: 100px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  display: none;
+}
+
+button[class^="control"]{
+  background: #ffa000;
+  border: none;
+  border-radius: 3px;
+}
+
+.control-up{
+  display: block;
+}
+
+.control-down svg{
+  transform: rotate(180deg);
+}
+
+.control-left svg{
+  transform: rotate(90deg);
+}
+
+.control-right svg{
+  transform: rotate(-90deg);
 }
