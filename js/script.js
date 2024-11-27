@@ -32,3 +32,33 @@ let lastUpdate, lastFood, tick;
 let state;
 let flash = false;
 let lastKeyPressed;
+
+
+function update() {
+    tick = Date.now();
+  
+    if (hasCollisions()) {
+      flash = true;
+      return;
+    }
+  
+    if (tick - lastUpdate > 500 / difficulty) {
+      if (lastKeyPressed && lastKeyPressed !== direction) {
+        setDirection(lastKeyPressed);
+      }
+  
+      moveSnake();
+      lastUpdate = tick;
+    }
+  
+    if (tick - lastFood > foodTreshold()) {
+      putFood();
+    }
+  
+    if (headMeetsFood()) {
+      needsGrowth = true;
+      food = null;
+      putFood();
+      setScore(score + difficulty);
+    }
+  }
