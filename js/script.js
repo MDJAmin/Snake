@@ -73,3 +73,13 @@ function update() {
     check.shift();
     return check.find((c) => c.x === head.x && c.y === head.y);
   }
+
+  
+function snakeContains(cell) {
+  return snake.find((c) => c.x === cell.x && c.y === cell.y);
+}
+
+function headMeetsFood() {
+  const head = snake[0];
+  return food && head.x == food.x && head.y === food.y;
+}
