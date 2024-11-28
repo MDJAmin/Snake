@@ -155,3 +155,22 @@ function drawFood() {
 function drawCell(i, j) {
   ctx.strokeRect(i * cellSize, j * cellSize, cellSize, cellSize);
 }
+
+
+function drawSnake() {
+  snake.forEach(({ x, y }) => fillCell(x, y));
+}
+
+function fillCell(x, y) {
+  ctx.beginPath();
+  ctx.rect(x * cellSize, y * cellSize, cellSize, cellSize);
+
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+}
+
+function setScore(next) {
+  score = next;
+  scoreVal.textContent = score;
+}
