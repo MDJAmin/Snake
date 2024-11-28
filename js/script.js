@@ -174,3 +174,20 @@ function setScore(next) {
   score = next;
   scoreVal.textContent = score;
 }
+
+function startGame() {
+  btnStart.textContent = "restart";
+  flash = false;
+  lastKeyPressed = null;
+  food = null;
+  setScore(0);
+  direction = DIR.LEFT;
+  lastFood = lastUpdate = Date.now();
+  paused = false;
+  setTimeout(putFood, 1000);
+  const startX = cellsNo / 2;
+  snake = [startX, startX + 1, startX + 2, startX + 3].map((x) => ({
+    x,
+    y: 15,
+  }));
+}
