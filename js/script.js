@@ -83,3 +83,37 @@ function headMeetsFood() {
   const head = snake[0];
   return food && head.x == food.x && head.y === food.y;
 }
+
+
+function moveSnake() {
+  const head = snake[0];
+  const next = Object.assign({}, head);
+
+  switch (direction) {
+    case DIR.LEFT:
+      --next.x;
+      break;
+    case DIR.UP:
+      --next.y;
+      break;
+    case DIR.RIGHT:
+      ++next.x;
+      break;
+    case DIR.DOWN:
+      ++next.y;
+      break;
+  }
+
+  if (next.x >= cellsNo) next.x = 0;
+  if (next.y >= cellsNo) next.y = 0;
+  if (next.x < 0) next.x = cellsNo - 1;
+  if (next.y < 0) next.y = cellsNo - 1;
+
+  if (!needsGrowth) {
+    snake.pop();
+  }
+
+  needsGrowth = false;
+  snake.unshift(next);
+}
+
