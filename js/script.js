@@ -117,3 +117,24 @@ function moveSnake() {
   snake.unshift(next);
 }
 
+
+function putFood() {
+  do {
+    food = {
+      x: ~~(Math.random() * (cellsNo - 1)),
+      y: ~~(Math.random() * (cellsNo - 1)),
+    };
+  } while (snakeContains(food));
+
+  lastFood = tick;
+}
+
+function draw() {
+  ctx.clearRect(0, 0, 400, 400);
+  drawCells();
+  drawFood();
+  if (flash && ~~(Date.now() / 100) % 2 === 0) {
+    return;
+  }
+  drawSnake();
+}
