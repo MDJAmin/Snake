@@ -138,3 +138,20 @@ function draw() {
   }
   drawSnake();
 }
+
+function drawCells() {
+  for (var i = 0; i < cellsNo; ++i)
+    for (var j = 0; j < cellsNo; ++j) drawCell(i, j);
+}
+
+function drawFood() {
+  if (food) {
+    ctx.fillStyle = "#4FC3F7";
+    fillCell(food.x, food.y);
+    ctx.fillStyle = "#fff";
+  }
+}
+
+function drawCell(i, j) {
+  ctx.strokeRect(i * cellSize, j * cellSize, cellSize, cellSize);
+}
