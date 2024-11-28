@@ -62,3 +62,14 @@ function update() {
       setScore(score + difficulty);
     }
   }
+
+  function foodTreshold() {
+    return (5000 / difficulty) * cellsNo;
+  }
+  
+  function hasCollisions() {
+    const head = snake[0];
+    const check = snake.concat([]);
+    check.shift();
+    return check.find((c) => c.x === head.x && c.y === head.y);
+  }
