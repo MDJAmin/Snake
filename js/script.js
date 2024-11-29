@@ -230,3 +230,9 @@ class RangeSlider {
     this.onChangeCallback(this.input.value);
   }
 }
+
+
+new RangeSlider(
+  document.querySelector(".range-difficulty"),
+  (value) => (difficulty = Number(value))
+);
