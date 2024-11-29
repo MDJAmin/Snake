@@ -207,3 +207,20 @@ function checkFood() {
     food.y = cellsNo - 1;
   }
 }
+class RangeSlider {
+  constructor(el, cb) {
+    this.input = el.querySelector("input");
+    this.slider = el.querySelector(".range_inputSlider");
+    this.value = el.querySelector(".range_inputValue");
+
+    this.input.addEventListener("input", (_) => this.onChange());
+    this.input.addEventListener("keydown", (e) => {
+      e.preventDefault();
+    });
+
+    this.onChangeCallback = cb;
+    this.onChange();
+  }
+
+
+}
