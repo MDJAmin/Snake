@@ -191,3 +191,19 @@ function startGame() {
     y: 15,
   }));
 }
+
+function setDirection(keyCode) {
+  direction = keyCode;
+}
+
+function checkFood() {
+  if (!food) return;
+
+  if (food.x >= cellsNo) {
+    food.x = cellsNo - 1;
+  }
+
+  if (food.y >= cellsNo) {
+    food.y = cellsNo - 1;
+  }
+}
