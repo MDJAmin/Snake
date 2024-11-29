@@ -236,3 +236,9 @@ new RangeSlider(
   document.querySelector(".range-difficulty"),
   (value) => (difficulty = Number(value))
 );
+
+new RangeSlider(document.querySelector(".range-columns"), (value) => {
+  cellsNo = Number(value);
+  cellSize = 400 / cellsNo;
+  checkFood();
+});
