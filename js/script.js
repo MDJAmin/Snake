@@ -242,3 +242,18 @@ new RangeSlider(document.querySelector(".range-columns"), (value) => {
   cellSize = 400 / cellsNo;
   checkFood();
 });
+
+// --- TOUCH CONTROLS
+var isPointerDown, pointerStart, pointerPos;
+
+function onTouchStart(e) {
+  const { clientX, clientY } = e.touches[0];
+  isPointerDown = true;
+  pointerStart = { x: clientX, y: clientY };
+  pointerPos = Object.assign({}, pointerStart);
+}
+
+function onTouchMove(e) {
+  const { clientX, clientY } = e.touches[0];
+  pointerPos = { x: clientX, y: clientY };
+}
