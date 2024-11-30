@@ -21,7 +21,7 @@ const DIR = {
 
 // ctx.strokeStyle = '#616161'
 ctx.strokeStyle = "#27373F";
-ctx.fillStyle = "#fff";
+ctx.fillStyle = "rgb(14, 198, 14)";
 
 let snake = [];
 let food = null;
@@ -146,9 +146,9 @@ function drawCells() {
 
 function drawFood() {
   if (food) {
-    ctx.fillStyle = "#4FC3F7";
+    ctx.fillStyle = "rgb(233, 8, 8)";
     fillCell(food.x, food.y);
-    ctx.fillStyle = "#fff";
+    ctx.fillStyle = "rgb(14, 198, 14)";
   }
 }
 

@@ -61,7 +61,7 @@ button[class^="btn"] {
   text-transform: uppercase;
   font-family: "Varela Round";
   font-size: 14px;
-  color: white;
+  color: rgb(255, 255, 255);
   font-weight: bold;
   border: none;
   border-radius: 3px;
