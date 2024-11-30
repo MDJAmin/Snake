@@ -5,7 +5,7 @@ let difficulty = 1;
 let score = 0;
 
 const canvas = document.querySelector("canvas");
-const ctx = canvas.getContext("2d");// type of our dimensional (its 2d in our case!)
+const ctx = canvas.getContext("2d"); // type of our dimensional (its 2d in our case!)
 
 const btnStart = document.querySelector(".btn-start");
 const btnPause = document.querySelector(".btn-pause");
@@ -70,11 +70,15 @@ function hasCollisions() {
   const head = snake[0];
   const check = snake.concat([]);
   check.shift();
-  return check.find((c) => c.x === head.x && c.y === head.y);
+  return check.find(
+    (c) => c.x === head.x && c.y === head.y
+  );
 }
 
 function snakeContains(cell) {
-  return snake.find((c) => c.x === cell.x && c.y === cell.y);
+  return snake.find(
+    (c) => c.x === cell.x && c.y === cell.y
+  );
 }
 
 function headMeetsFood() {
@@ -149,7 +153,12 @@ function drawFood() {
 }
 
 function drawCell(i, j) {
-  ctx.strokeRect(i * cellSize, j * cellSize, cellSize, cellSize);
+  ctx.strokeRect(
+    i * cellSize,
+    j * cellSize,
+    cellSize,
+    cellSize
+  );
 }
 
 function drawSnake() {
@@ -181,10 +190,12 @@ function startGame() {
   paused = false;
   setTimeout(putFood, 1000);
   const startX = cellsNo / 2;
-  snake = [startX, startX + 1, startX + 2, startX + 3].map((x) => ({
-    x,
-    y: 15,
-  }));
+  snake = [startX, startX + 1, startX + 2, startX + 3].map(
+    (x) => ({
+      x,
+      y: 15,
+    })
+  );
 }
 
 function loop() {
@@ -240,7 +251,9 @@ class RangeSlider {
     this.slider = el.querySelector(".range_inputSlider");
     this.value = el.querySelector(".range_inputValue");
 
-    this.input.addEventListener("input", (_) => this.onChange());
+    this.input.addEventListener("input", (_) =>
+      this.onChange()
+    );
     this.input.addEventListener("keydown", (e) => {
       e.preventDefault();
     });
@@ -263,11 +276,14 @@ new RangeSlider(
   (value) => (difficulty = Number(value))
 );
 
-new RangeSlider(document.querySelector(".range-columns"), (value) => {
-  cellsNo = Number(value);
-  cellSize = 400 / cellsNo;
-  checkFood();
-});
+new RangeSlider(
+  document.querySelector(".range-columns"),
+  (value) => {
+    cellsNo = Number(value);
+    cellSize = 400 / cellsNo;
+    checkFood();
+  }
+);
 
 // --- TOUCH CONTROLS
 var isPointerDown, pointerStart, pointerPos;
