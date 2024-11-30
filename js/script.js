@@ -1,3 +1,5 @@
+// Enjoy!! 👾
+
 let cellsNo = 20;
 let cellSize = 400 / cellsNo;
 let difficulty = 1;
