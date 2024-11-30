@@ -1,15 +1,15 @@
-let callsNo = 20;
-let cellSize = 400 / callsNo;
+let cellsNo = 20;
+let cellSize = 400 / cellsNo;
 let difficulty = 1;
 
-let score = 0
+let score = 0;
 
-const canvas = document.querySelector("canvas")
-const ctx = canvas.getContext("2d"); // type of our dimensional (its 2d in our case!)
+const canvas = document.querySelector("canvas");
+const ctx = canvas.getContext("2d");// type of our dimensional (its 2d in our case!)
 
 const btnStart = document.querySelector(".btn-start");
 const btnPause = document.querySelector(".btn-pause");
-const scoreVal = document.querySelector(".score-val");
+const scoreVal = document.querySelector(".score_val");
 
 let direction;
 const DIR = {
@@ -33,48 +33,46 @@ let state;
 let flash = false;
 let lastKeyPressed;
 
-
 function update() {
-    tick = Date.now();
-  
-    if (hasCollisions()) {
-      flash = true;
-      return;
-    }
-  
-    if (tick - lastUpdate > 500 / difficulty) {
-      if (lastKeyPressed && lastKeyPressed !== direction) {
-        setDirection(lastKeyPressed);
-      }
-  
-      moveSnake();
-      lastUpdate = tick;
-    }
-  
-    if (tick - lastFood > foodTreshold()) {
-      putFood();
-    }
-  
-    if (headMeetsFood()) {
-      needsGrowth = true;
-      food = null;
-      putFood();
-      setScore(score + difficulty);
-    }
+  tick = Date.now();
+
+  if (hasCollisions()) {
+    flash = true;
+    return;
   }
 
-  function foodTreshold() {
-    return (5000 / difficulty) * cellsNo;
-  }
-  
-  function hasCollisions() {
-    const head = snake[0];
-    const check = snake.concat([]);
-    check.shift();
-    return check.find((c) => c.x === head.x && c.y === head.y);
+  if (tick - lastUpdate > 500 / difficulty) {
+    if (lastKeyPressed && lastKeyPressed !== direction) {
+      setDirection(lastKeyPressed);
+    }
+
+    moveSnake();
+    lastUpdate = tick;
   }
 
-  
+  if (tick - lastFood > foodTreshold()) {
+    putFood();
+  }
+
+  if (headMeetsFood()) {
+    needsGrowth = true;
+    food = null;
+    putFood();
+    setScore(score + difficulty);
+  }
+}
+
+function foodTreshold() {
+  return (5000 / difficulty) * cellsNo;
+}
+
+function hasCollisions() {
+  const head = snake[0];
+  const check = snake.concat([]);
+  check.shift();
+  return check.find((c) => c.x === head.x && c.y === head.y);
+}
+
 function snakeContains(cell) {
   return snake.find((c) => c.x === cell.x && c.y === cell.y);
 }
@@ -83,7 +81,6 @@ function headMeetsFood() {
   const head = snake[0];
   return food && head.x == food.x && head.y === food.y;
 }
-
 
 function moveSnake() {
   const head = snake[0];
@@ -116,7 +113,6 @@ function moveSnake() {
   needsGrowth = false;
   snake.unshift(next);
 }
-
 
 function putFood() {
   do {
@@ -156,7 +152,6 @@ function drawCell(i, j) {
   ctx.strokeRect(i * cellSize, j * cellSize, cellSize, cellSize);
 }
 
-
 function drawSnake() {
   snake.forEach(({ x, y }) => fillCell(x, y));
 }
@@ -192,6 +187,37 @@ function startGame() {
   }));
 }
 
+function loop() {
+  requestAnimationFrame(loop);
+  draw();
+
+  if (paused) return;
+  update();
+}
+
+requestAnimationFrame(loop);
+
+btnStart.addEventListener("click", startGame);
+btnPause.addEventListener("click", pause);
+
+function pause() {
+  paused = !paused;
+  btnPause.textContent = paused ? "resume" : "pause";
+}
+
+window.addEventListener("keydown", onKeyDown);
+function onKeyDown({ keyCode }) {
+  switch (true) {
+    case keyCode === DIR.DOWN && direction === DIR.UP:
+    case keyCode === DIR.UP && direction === DIR.DOWN:
+    case keyCode === DIR.LEFT && direction === DIR.RIGHT:
+    case keyCode === DIR.RIGHT && direction === DIR.LEFT:
+      return;
+  }
+
+  lastKeyPressed = keyCode;
+}
+
 function setDirection(keyCode) {
   direction = keyCode;
 }
@@ -207,6 +233,7 @@ function checkFood() {
     food.y = cellsNo - 1;
   }
 }
+
 class RangeSlider {
   constructor(el, cb) {
     this.input = el.querySelector("input");
@@ -230,7 +257,6 @@ class RangeSlider {
     this.onChangeCallback(this.input.value);
   }
 }
-
 
 new RangeSlider(
   document.querySelector(".range-difficulty"),
