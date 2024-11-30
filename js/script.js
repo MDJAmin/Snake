@@ -257,3 +257,36 @@ function onTouchMove(e) {
   const { clientX, clientY } = e.touches[0];
   pointerPos = { x: clientX, y: clientY };
 }
+
+function onTouchEnd() {
+  if (!isPointerDown) return;
+  isPointerDown = false;
+
+  const deltaX = pointerStart.x - pointerPos.x;
+  const deltaY = pointerStart.y - pointerPos.y;
+  const keyCode = touchToKeyCode(deltaX, deltaY);
+
+  if (keyCode) onKeyDown({ keyCode });
+}
+
+function touchToKeyCode(x, y) {
+  if (Math.abs(x) > Math.abs(y)) {
+    if (x < -1) {
+      keyCode = DIR.RIGHT;
+    } else if (x > 1) {
+      keyCode = DIR.LEFT;
+    }
+  } else {
+    if (y < -1) {
+      keyCode = DIR.DOWN;
+    } else if (y > 1) {
+      keyCode = DIR.UP;
+    }
+  }
+
+  return keyCode;
+}
+
+canvas.addEventListener("touchstart", onTouchStart);
+window.addEventListener("touchmove", onTouchMove);
+window.addEventListener("touchend", onTouchEnd);
