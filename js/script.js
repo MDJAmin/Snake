@@ -266,9 +266,8 @@ class RangeSlider {
 
   onChange() {
     this.value.textContent = this.input.value;
-    this.slider.style.transform = `scaleX(${
-      this.input.value / this.input.step / 10
-    })`;
+    this.slider.style.transform = `scaleX(${this.input.value / this.input.step / 10
+      })`;
     this.onChangeCallback(this.input.value);
   }
 }
