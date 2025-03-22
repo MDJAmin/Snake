@@ -333,3 +333,25 @@ function touchToKeyCode(x, y) {
 canvas.addEventListener("touchstart", onTouchStart);
 window.addEventListener("touchmove", onTouchMove);
 window.addEventListener("touchend", onTouchEnd);
+
+const btnUp = document.querySelector(".btn-up");
+const btnDown = document.querySelector(".btn-down");
+const btnLeft = document.querySelector(".btn-left");
+const btnRight = document.querySelector(".btn-right");
+
+btnUp.addEventListener("click", () => setDirection(DIR.UP));
+btnDown.addEventListener("click", () => setDirection(DIR.DOWN));
+btnLeft.addEventListener("click", () => setDirection(DIR.LEFT));
+btnRight.addEventListener("click", () => setDirection(DIR.RIGHT));
+
+function setDirection(keyCode) {
+  if (
+    (keyCode === DIR.DOWN && direction === DIR.UP) ||
+    (keyCode === DIR.UP && direction === DIR.DOWN) ||
+    (keyCode === DIR.LEFT && direction === DIR.RIGHT) ||
+    (keyCode === DIR.RIGHT && direction === DIR.LEFT)
+  ) {
+    return;
+  }
+  direction = keyCode;
+}

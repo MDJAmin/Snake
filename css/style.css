@@ -83,11 +83,6 @@ button[class^="btn"]:hover {
   background: #ffb333;
   box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.3);
 }
-@media (min-width: 450px) {
-  button[class^="btn"] {
-    width: 150px;
-  }
-}
 
 button[disabled] {
   background: #cc8000;
@@ -189,4 +184,49 @@ button[class^="control"] {
 
 .control-right svg {
   transform: rotate(-90deg);
+}
+
+.mobile-controls{
+  display: none;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.upAndDown{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.btn-up, .btn-down{
+padding-left: 15.5px !important;
+}
+.btn-up, .btn-down, .btn-left, .btn-right{
+  width: 50px !important;
+  height: 50px !important;
+  margin: 2px !important;
+  border-radius: 50% !important;
+  font-size: 1.6em !important;
+  text-align: center;
+}
+
+@media (max-width: 1000px){
+  .mobile-controls{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+
+@media (max-width: 450px){
+  button[class^="btn"] {
+    margin: 10px 10px;
+    margin-bottom: 30px;
+  }
+}
+
+@media (min-width: 450px) {
+  button[class^="btn"] {
+    width: 150px;
+  }
 }
